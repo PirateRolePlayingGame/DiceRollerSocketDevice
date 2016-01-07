@@ -23,7 +23,7 @@ function wsOnMessage($clientID, $message, $messageLength, $binary) {
 		//Send the message to everyone but the person who said it
 		foreach ( $Server->wsClients as $id => $client )
 			if($id != $clientID){
-				$Server->wsSend($message);
+				$Server->wsSend($id, "$message");
 				// $Server->wsSend($id, "Visitor $clientID ($ip) said \"$message\"");
 		}
 }
@@ -31,27 +31,27 @@ function wsOnMessage($clientID, $message, $messageLength, $binary) {
 // when a client connects
 function wsOnOpen($clientID)
 {
-	// global $Server;
+	global $Server;
 	// $ip = long2ip( $Server->wsClients[$clientID][6] );
 
 	// $Server->log( "$ip ($clientID) has connected." );
 
 	// //Send a join notice to everyone but the person who joined
-	// foreach ( $Server->wsClients as $id => $client )
-	// 	if ( $id != $clientID )
-	// 		$Server->wsSend($id, "Visitor $clientID ($ip) has joined the room.");
+	foreach ( $Server->wsClients as $id => $client )
+		if ( $id != $clientID )
+			$Server->wsSend($id, "");
 }
 
 // when a client closes or lost connection
 function wsOnClose($clientID, $status) {
-	// global $Server;
+	global $Server;
 	// $ip = long2ip( $Server->wsClients[$clientID][6] );
 
 	// $Server->log( "$ip ($clientID) has disconnected." );
 
 	// //Send a user left notice to everyone in the room
-	// foreach ( $Server->wsClients as $id => $client )
-	// 	$Server->wsSend($id, "Visitor $clientID ($ip) has left the room.");
+	foreach ( $Server->wsClients as $id => $client )
+		$Server->wsSend($id, "");
 }
 
 // start the server
