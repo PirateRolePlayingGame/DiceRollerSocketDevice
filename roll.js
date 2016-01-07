@@ -17,7 +17,7 @@ function getCurrentTime()
 
 function roleada()
 {
-    if(Maths.abs(time - getCurrentTime()) > 3)
+    if(Math.abs(time - getCurrentTime()) > 3)
     {
         time = getCurrentTime();
     	var dado = document.getElementById("tipo").value;
