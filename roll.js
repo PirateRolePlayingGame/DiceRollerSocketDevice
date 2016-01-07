@@ -59,8 +59,8 @@ function getFigurilla(c){
 
 function log(text)
 {
-    log = document.getElementById('show');
-    log.innerHTML = text;
+    var k = document.getElementById('show');
+    k.innerHTML = text;
 }
 
 function send(text)
