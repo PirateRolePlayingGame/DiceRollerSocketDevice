@@ -23,6 +23,9 @@ function roleada()
     	var dado = document.getElementById("tipo").value;
         var cant = document.getElementById("cant").value;
     	
+    	if(cant < 1 || cant > 30)
+    		return(false);
+    	
         var formattedString = '<div class="text-center container well">';
         var sum = 0;
         dado = dado.substring(1, dado.length);
@@ -39,8 +42,8 @@ function roleada()
         formattedString += '<br><h2 class="jumbotron">' + getFigurilla(dado) + sum + '</h2></div>';
         log(formattedString);
     	send(formattedString);
-        return(false);
     }
+    return(false);
 }
 
 function getFigurilla(c){
