@@ -1,6 +1,6 @@
 //Cambiar por ip del Host 
 //Ejemplo: 200.84.182.249:9300
-var ipPuerto = prompt('Ingrese ip:puerto', '200.84.182.249:9300');
+var ipPuerto = prompt('Ingrese ip:puerto', '186.95.207.229:9300');
 console.log(ipPuerto);
 var Server = new FancyWebSocket('ws://' + ipPuerto);
 var time = 0;
